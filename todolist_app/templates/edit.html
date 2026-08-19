@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title> Edit Task - Taskmate </title>
+{% endblock %}
+
+	{% block content %}
+
+        {% if task_obj.manager == request.user  %}
+             <form method="POST" class=" pt-5 row ">
+                 {% csrf_token %}
+                 <label class="form-label col-2">Add Task</label>
+                 <input type="text" class="form-control col" name="task" placeholder="{{task_obj }}" value="{{task_obj }}" }} ">
+                 <button type="submit" class="btn btn-primary col-2 ">Update task</button>
+            </form>
+        {% else  %}
+
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div class="">
+
+                Access restricted
+            </div>
+        {% endif %}
+
+    {% endblock content %}
